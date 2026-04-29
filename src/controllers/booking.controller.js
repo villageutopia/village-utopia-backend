@@ -5,10 +5,16 @@ import prisma    from '../config/db.js'
 import { generateBookingRef, getDateRange, calcNights, parseDate } from '../utils/helpers.js'
 import { sendBookingConfirmation, sendCancellationEmail } from '../utils/email.js'
 
-const razorpay = new Razorpay({
-  key_id:     process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-})
+// Lazy init — crash nahi hoga agar keys missing hain startup pe
+function getRazorpay() {
+  if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+    throw new Error('Razorpay keys not configured. Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in environment variables.')
+  }
+  return new Razorpay({
+    key_id:     process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  })
+}
 
 const ADDON_PRICES = {
   breakfast:  350,
@@ -63,7 +69,7 @@ export async function createOrder(req, res, next) {
       : Math.round(totalAmount * 0.3)
 
     // ── Create Razorpay order ──
-    const rzpOrder = await razorpay.orders.create({
+    const rzpOrder = await getRazorpay().orders.create({
       amount:   amountToPay * 100,   // paise
       currency: 'INR',
       receipt:  `vu_${Date.now()}`,
