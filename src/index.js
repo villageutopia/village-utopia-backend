@@ -5,6 +5,7 @@ import cors       from 'cors'
 import authRoutes    from './routes/auth.routes.js'
 import roomsRoutes   from './routes/rooms.routes.js'
 import bookingRoutes from './routes/booking.routes.js'
+import adminRoutes   from './routes/admin.routes.js'
 import { errorHandler, notFound } from './middleware/errorHandler.js'
 
 const app  = express()
@@ -34,6 +35,7 @@ app.get('/health', (req, res) => {
 app.use('/api/auth',     authRoutes)
 app.use('/api/rooms',    roomsRoutes)
 app.use('/api/bookings', bookingRoutes)
+app.use('/api/admin',    adminRoutes)
 
 // ── Error handling ──────────────────────────────────────────
 app.use(notFound)
