@@ -253,8 +253,15 @@ export async function createOfflineBooking(req, res, next) {
 // Logged-in user's booking history
 export async function myBookings(req, res, next) {
   try {
+    // Match by userId OR guestEmail — so guest bookings also show after login
+    const user = await prisma.user.findUnique({ where: { id: req.user.id } })
     const bookings = await prisma.booking.findMany({
-      where:   { userId: req.user.id },
+      where: {
+        OR: [
+          { userId: req.user.id },
+          { guestEmail: user?.email },
+        ]
+      },
       include: { room: { select: { name: true, images: true, type: true } }, payment: true },
       orderBy: { createdAt: 'desc' },
     })
