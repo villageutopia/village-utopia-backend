@@ -51,7 +51,7 @@ export async function sendBookingConfirmation(booking, room) {
     <div class="wrap">
       <div class="header">
         <h1>Village Utopia Cottages</h1>
-        <p>Goa, India · stay@villageutopia.in</p>
+        <p>Goa, India · villageutopia.in@gmail.com · +91 8468960995</p>
         <div class="badge">✓ BOOKING CONFIRMED</div>
       </div>
       <div class="body">
@@ -78,7 +78,7 @@ export async function sendBookingConfirmation(booking, room) {
 
         <div class="note">
           <strong>📍 Directions:</strong> Exact property location will be shared 24 hours before check-in.<br/>
-          <strong>📞 Contact:</strong> +91 98765 43210 · stay@villageutopia.in<br/>
+          <strong>📞 Contact:</strong> +91 8468960995 · villageutopia.in@gmail.com<br/>
           <strong>❌ Cancellation:</strong> Free cancellation up to 48 hours before check-in.
         </div>
 
@@ -129,7 +129,7 @@ export async function sendCancellationEmail(booking) {
           <p>Dear <strong>${booking.guestName}</strong>,</p>
           <p>Your booking <strong>${booking.bookingRef}</strong> has been cancelled.</p>
           <p style="color:#555;">Refund (if applicable) will be processed within 5–7 business days as per our cancellation policy.</p>
-          <p>Questions? Contact us at stay@villageutopia.in or +91 98765 43210.</p>
+          <p>Questions? Contact us at villageutopia.in@gmail.com or +91 8468960995.</p>
         </div>
       </div>
     `,

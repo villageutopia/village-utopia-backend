@@ -23,7 +23,7 @@ export async function generateInvoicePDF(booking, room) {
   // ── Header bar ──
   page.drawRectangle({ x: 0, y: height - 100, width, height: 100, color: GREEN })
   page.drawText('Village Utopia Cottages', { x: 40, y: height - 42, font: bold, size: 22, color: WHITE })
-  page.drawText('Goa, India  ·  stay@villageutopia.in  ·  +91 98765 43210',
+  page.drawText('Goa, India  ·  villageutopia.in@gmail.com  ·  +91 8468960995',
     { x: 40, y: height - 64, font: regular, size: 9, color: rgb(0.8, 0.9, 0.8) })
   page.drawText('BOOKING CONFIRMATION', { x: 40, y: height - 86, font: bold, size: 10, color: GOLD })
 
