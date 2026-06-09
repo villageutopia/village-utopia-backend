@@ -83,14 +83,14 @@ export async function generateInvoicePDF(booking, room) {
     page.drawText(label, {
       x: 40, y, font: isBold ? bold : regular, size: 10, color: isBold ? BLACK : GRAY
     })
-    page.drawText(`₹${amount.toLocaleString('en-IN')}`, {
+    page.drawText(`Rs. ${amount.toLocaleString('en-IN')}`, {
       x: width - 80, y, font: isBold ? bold : regular, size: 10,
       color: isBold ? BLACK : GRAY
     })
     y -= 18
   }
 
-  addAmount(`Room (₹${room.price.toLocaleString()} × ${booking.nights} nights)`, booking.roomCost)
+  addAmount(`Room (RS. ${room.price.toLocaleString()} × ${booking.nights} nights)`, booking.roomCost)
 
   const addons = booking.addons || []
   if (addons.length > 0) {
@@ -108,12 +108,12 @@ export async function generateInvoicePDF(booking, room) {
   const due     = booking.totalAmount - paidAmt
 
   page.drawText('Paid Now:', { x: 40, y, font: bold, size: 10, color: GRAY })
-  page.drawText(`₹${paidAmt.toLocaleString('en-IN')}`, { x: width - 80, y, font: bold, size: 10, color: rgb(0.1, 0.55, 0.2) })
+  page.drawText(`Rs. ${paidAmt.toLocaleString('en-IN')}`, { x: width - 80, y, font: bold, size: 10, color: rgb(0.1, 0.55, 0.2) })
   y -= 18
 
   if (due > 0) {
     page.drawText('Balance due on arrival:', { x: 40, y, font: regular, size: 10, color: GRAY })
-    page.drawText(`₹${due.toLocaleString('en-IN')}`, { x: width - 80, y, font: bold, size: 10, color: rgb(0.7, 0.35, 0.1) })
+    page.drawText(`Rs. ${due.toLocaleString('en-IN')}`, { x: width - 80, y, font: bold, size: 10, color: rgb(0.7, 0.35, 0.1) })
     y -= 18
   }
 

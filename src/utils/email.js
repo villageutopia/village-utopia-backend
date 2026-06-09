@@ -72,9 +72,9 @@ export async function sendBookingConfirmation(booking, room) {
 
         <h3 style="color:#2D4A32;border-bottom:2px solid #C9A96E;padding-bottom:6px;margin-top:24px;">Payment</h3>
 
-        <div class="row"><span class="label">Total Amount</span><span>₹${booking.totalAmount.toLocaleString('en-IN')}</span></div>
-        <div class="row"><span class="label">Paid Now</span><span class="green">₹${paidAmt.toLocaleString('en-IN')}</span></div>
-        ${due > 0 ? `<div class="row"><span class="label">Balance (due on arrival)</span><span style="color:#b05a00;">₹${due.toLocaleString('en-IN')}</span></div>` : ''}
+        <div class="row"><span class="label">Total Amount</span><span>Rs. ${booking.totalAmount.toLocaleString('en-IN')}</span></div>
+        <div class="row"><span class="label">Paid Now</span><span class="green">Rs. ${paidAmt.toLocaleString('en-IN')}</span></div>
+        ${due > 0 ? `<div class="row"><span class="label">Balance (due on arrival)</span><span style="color:#b05a00;">Rs. ${due.toLocaleString('en-IN')}</span></div>` : ''}
 
         <div class="note">
           <strong>📍 Directions:</strong> Exact property location will be shared 24 hours before check-in.<br/>
